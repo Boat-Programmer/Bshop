@@ -77,7 +77,20 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Bshop',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT' ''
+    }
+}
+
 DATABASES['default'] = dj_database_url.config(default='postgres://fgdofarnslgnwj:52ea41fe26604a1dfdc498540eb30f6ef9aa484deb1f11f21903bf91407f21a9@ec2-3-233-236-188.compute-1.amazonaws.com:5432/dohodblfqpr47')
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
