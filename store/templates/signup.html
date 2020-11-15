@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Eshop | Signup {% endblock%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="font-weight-light">Signup | Bshop </h1>
+            <hr>
+            <form action="/signup" method="POST">
+                {% if error %}
+                <small style="color:red"> {{ error.field_error }} </small>
+                <small style="color:green"> {{ error.success }} </small>
+                {% endif %}
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Name | ชื่อ</label>
+                    <input value="{{ userData.name }}" name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
+                    {% if error %}
+                    <small style="color:red"> {{ error.name_error }} </small>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address | อีเมล์</label>
+                    <input value="{{ userData.email }}" name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    {% if error %}
+                    <small style="color:red"> {{ error.emailExits_error }} </small>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone number | เบอร์โทรศัพท์</label>
+                    <input value="{{ userData.phone }}" name="phone" type="number" class="form-control" id="phone" placeholder="Enter Phone Number">
+                    {% if error %}
+                    <small style="color:red"> {{ error.phoneNumber_error }} </small>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="password">Password | รหัสผ่าน</label>
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password">
+                    {% if error %}
+                    <small style="color:red">{{ error.notMatch_error }}
+                        {{ error.minPass_error }} </small>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password | ยืนยันรหัสผ่าน</label>
+                    <input name="confirm_password" type="password" class="form-control" id="confirm_password" placeholder="Enter Password">
+                    {% if error %}
+                    <small style="color:red"> {{ error.notMatch_error }}
+                        {{ error.minPass_error }} </small>
+                    {% endif %}
+                </div>
+                <span>เข้าสู่ระบบ<a href="/login">ที่นี้</a></span>
+                <br>
+                <div class="text-right">
+                     <button type="submit" class="btn btn-primary">SIGNUP | สมัครสมาชิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
